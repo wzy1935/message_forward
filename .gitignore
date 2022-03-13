@@ -1,0 +1,4 @@
+__pycache__/
+*.txt
+nohup.out
+!install.bat
