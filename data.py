@@ -17,6 +17,16 @@ class Message:
     def to_tuple(self):
         return (self.id, self.title, self.content, self.time, self.user, self.user_name)
 
+    def to_map(self):
+        m = {}
+        m['id'] = self.id
+        m['title'] = self.title
+        m['content'] = self.content
+        m['time'] = self.time
+        if self.user is not None: m['user'] = self.user
+        if self.user_name is not None: m['user_name'] = self.user_name
+        return m
+
     @staticmethod
     def from_tuple(tuple):
         return Message(tuple[1], tuple[2], tuple[3], tuple[0], tuple[4], tuple[5])
@@ -24,7 +34,7 @@ class Message:
 
 class MessageService:
     def __init__(self):
-        self.conn = sqlite3.connect('message.db')
+        self.conn = sqlite3.connect('message.db', check_same_thread=False)
 
     def drop(self):
         with self.conn as conn:
