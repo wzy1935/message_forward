@@ -4,7 +4,7 @@ from data import MessageService, Message
 
 app = Flask(__name__)
 ms = MessageService()
-password = 'x123456'
+password = '******'
 
 def to_timestamp(local_date, local_time):
     return int(time.mktime(time.strptime(f'{local_date} {local_time}', "%Y-%m-%d %H.%M")))
